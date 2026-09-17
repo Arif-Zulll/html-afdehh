@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "artist": "Geisha",
+    "title": "Love Recalls - EP",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/db/63/15/db6315b5-0745-31ec-84a4-d0dd3b4c5f08/24UMGIM63169.rgb.jpg/600x600bb.jpg",
+    "previewUrl": "audio/geisha.mp3"
+  },
+  {
+    "id": 2,
+    "artist": "Dewa 19",
+    "title": "Aku Milikmu",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d3/18/f0/d318f081-37d4-83b3-85f2-cb1efc4883f3/886444007850.jpg/600x600bb.jpg",
+    "previewUrl": "audio/dewa19.mp3"
+  },
+  {
+    "id": 3,
+    "artist": "Juicy Luicy",
+    "title": "Nonfiksi",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/26/0c/be/260cbe21-9d2d-a2ab-3391-f8fde6ad6840/198704005169_Cover.jpg/600x600bb.jpg",
+    "previewUrl": "audio/juicy_luicy.mp3"
+  }
+]

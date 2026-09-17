@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afde Music</title>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HEADER UTAMA -->
+  <header>
+    <div class="header-kiri">
+      <button id="menuBtn" class="tombol-menu" aria-label="Buka Menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <div class="logo">
+        <a href="index.html">
+          <span class="material-symbols-outlined">play_arrow</span> Afde Music
+        </a>
+      </div>
+    </div>
+
+    <div class="kotak-pencarian">
+      <input type="text" id="searchInput" placeholder="Apa yang ingin kamu putar?">
+      <button id="searchBtn" aria-label="Cari">
+        <span class="material-symbols-outlined">search</span>
+      </button>
+      <div class="pembatas-pencarian"></div>
+      <a href="html/about.html" class="tombol-ikon-tentang" data-tooltip="Tentang Afde Music">
+        <span class="material-symbols-outlined">info</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebarOverlay" class="pelapis-bilah-sisi"></div>
+
+  <!-- SIDEBAR NAVIGASI -->
+  <aside id="sidebar" class="bilah-sisi">
+    <div class="header-bilah-sisi">
+      <div class="logo-bilah-sisi">
+        <button id="closeBtn" class="tombol-tutup" aria-label="Tutup Menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <a href="index.html">
+          <span class="material-symbols-outlined">play_arrow</span>
+          <span>Afde Music</span>
+        </a>
+      </div>
+    </div>
+    
+    <ul class="menu-bilah-sisi">
+      <li data-tooltip="Beranda">
+        <a href="index.html" class="aktif">
+          <span class="material-symbols-outlined ikon-menu">home</span>
+          <span class="teks-menu">Beranda</span>
+        </a>
+      </li>
+      <li data-tooltip="Trending">
+        <a href="html/trending.html">
+          <span class="material-symbols-outlined ikon-menu">local_fire_department</span>
+          <span class="teks-menu">Trending</span>
+        </a>
+      </li>
+      <li data-tooltip="Lagu Favorit">
+        <a href="html/favorit.html">
+          <span class="material-symbols-outlined ikon-menu">favorite</span>
+          <span class="teks-menu">Lagu Favorit</span>
+        </a>
+      </li>
+      <li data-tooltip="Playlist Saya">
+        <a href="html/playlist.html">
+          <span class="material-symbols-outlined ikon-menu">queue_music</span>
+          <span class="teks-menu">Playlist Saya</span>
+        </a>
+      </li>
+      <li id="authMenuLi" data-tooltip="Masuk / Daftar">
+        <a href="#" id="openAuthBtn">
+          <span class="material-symbols-outlined ikon-menu">key</span>
+          <span class="teks-menu">Masuk / Daftar</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- KONTEN UTAMA -->
+  <main>
+    <div class="header-utama">
+      <h2 id="sectionTitle">Daftar Lagu</h2>
+    </div>
+
+    <div class="grid-lagu" id="songGrid">
+      <div class="teks-status">Memuat lagu pilihan...</div>
+    </div>
+  </main>
+
+  <!-- PLAYER BAR -->
+  <div class="bilah-pemutar">
+    <audio id="audioPlayer" src=""></audio>
+
+    <div class="sedang-diputar">
+      <img id="playerImg" src="images/placeholder.png" alt="Cover Lagu">
+      <div class="info-trek">
+        <div class="judul-lagu" id="playerTitle">Belum ada lagu</div>
+        <div class="penyanyi-lagu" id="playerArtist">-</div>
+      </div>
+    </div>
+
+    <div class="kontrol-pemutar">
+      <button id="playPauseBtn" class="tombol-kontrol" aria-label="Play/Pause">
+        <span class="material-symbols-outlined">play_arrow</span>
+      </button>
+      <div class="kontainer-progres">
+        <span id="currentTime">0:00</span>
+        <input type="range" id="progressBar" value="0" min="0" max="100">
+        <span id="totalTime">0:00</span>
+      </div>
+    </div>
+
+    <div class="kontainer-volume">
+      <span class="material-symbols-outlined">volume_up</span>
+      <input type="range" id="volumeBar" value="100" min="0" max="100">
+    </div>
+  </div>
+
+  <!-- MODAL AUTHENTICATION -->
+  <div id="authModal" class="modal tersembunyi">
+    <div class="konten-modal">
+      <button id="closeModalBtn" class="tombol-tutup-modal">&times;</button>
+      
+      <div id="loginFormContainer">
+        <h3>Masuk ke Afde Music</h3>
+        <form id="loginForm">
+          <input type="email" id="loginEmail" placeholder="Email" required>
+          <input type="password" id="loginPassword" placeholder="Kata Sandi" required>
+          <button type="submit" class="tombol-submit-modal">Masuk</button>
+        </form>
+        <p class="teks-sakelar-modal">Belum punya akun? <a href="#" id="switchToRegister">Daftar di sini</a></p>
+      </div>
+
+      <div id="registerFormContainer" class="tersembunyi">
+        <h3>Daftar Akun Baru</h3>
+        <form id="registerForm">
+          <input type="text" id="regFullName" placeholder="Nama Lengkap" required>
+          <input type="tel" id="regPhone" placeholder="Nomor Telepon" required>
+          <input type="email" id="regEmail" placeholder="Email" required>
+          <input type="password" id="regPassword" placeholder="Kata Sandi" required>
+          <button type="submit" class="tombol-submit-modal">Daftar</button>
+        </form>
+        <p class="teks-sakelar-modal">Sudah punya akun? <a href="#" id="switchToLogin">Masuk di sini</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PILIH PLAYLIST TUJUAN (DITAMBAHKAN DI SINI) -->
+  <div id="selectPlaylistModal" class="modal tersembunyi">
+    <div class="konten-modal">
+      <button id="closeSelectPlaylistBtn" class="tombol-tutup-modal">&times;</button>
+      <h3>Pilih Playlist</h3>
+      <div id="playlistSelectList" class="modal-pilih-playlist"></div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

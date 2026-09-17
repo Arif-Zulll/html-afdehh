@@ -1,0 +1,471 @@
+/* ==========================================
+   RESET & GAYA GLOBAL
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 90px; /* Jarak agar tidak tertutup pemutar musik */
+}
+
+.tersembunyi, .pelapis-bilah-sisi { display: none !important; }
+
+/* ==========================================
+   HEADER & SEARCH BOX
+   ========================================== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000000;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #282828;
+}
+
+.header-kiri {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tombol-menu {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+}
+
+.logo span {
+  color: #1db954;
+}
+
+.logo a, .logo-bilah-sisi a, .logo a:visited, .logo-bilah-sisi a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.kotak-pencarian {
+  display: flex;
+  align-items: center;
+  background-color: #242424;
+  border-radius: 50px;
+  padding: 4px 12px;
+}
+
+.kotak-pencarian input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  padding: 8px;
+  width: 200px;
+}
+
+.kotak-pencarian input::placeholder {
+  color: #b3b3b3;
+}
+
+.kotak-pencarian button {
+  background-color: #1db954;
+  border: none;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pembatas-pencarian {
+  width: 1px;
+  height: 20px;
+  background-color: #333;
+  margin: 0 10px;
+}
+
+.tombol-ikon-tentang {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 4px;
+}
+
+/* ==========================================
+   SIDEBAR & OVERLAY
+   ========================================== */
+.pelapis-bilah-sisi {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+.pelapis-bilah-sisi.aktif {
+  display: block !important;
+}
+
+.bilah-sisi {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100%;
+  background-color: #000000;
+  z-index: 1000;
+  transition: left 0.3s ease;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bilah-sisi.aktif {
+  left: 0;
+}
+
+.header-bilah-sisi {
+  margin-bottom: 24px;
+}
+
+.logo-bilah-sisi {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.tombol-tutup {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.menu-bilah-sisi {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-bilah-sisi li a {
+  color: #b3b3b3;
+  text-decoration: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.menu-bilah-sisi li a:hover,
+.menu-bilah-sisi li a.aktif {
+  color: #ffffff;
+  background-color: #282828;
+}
+
+/* ==========================================
+   CONTENT & SONG GRID (TRENDING)
+   ========================================== */
+main {
+  flex: 1;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header-utama {
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #282828;
+}
+
+#sectionTitle {
+  font-size: 1.8rem;
+}
+
+.grid-lagu {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.teks-status {
+  grid-column: 1 / -1;
+  color: #b3b3b3;
+  padding: 20px 0;
+}
+
+.kartu-lagu {
+  background-color: #181818;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.kartu-lagu:hover {
+  background-color: #282828;
+  transform: translateY(-4px);
+}
+
+.kartu-lagu img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.judul-lagu {
+  font-weight: bold;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.penyanyi-lagu {
+  font-size: 0.85rem;
+  color: #b3b3b3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================
+   PLAYER BAR (BAGIAN BAWAH)
+   ========================================== */
+.bilah-pemutar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #000000;
+  border-top: 1px solid #282828;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 100;
+}
+
+.sedang-diputar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 25%;
+}
+
+.sedang-diputar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #282828;
+}
+
+.info-trek {
+  overflow: hidden;
+}
+
+.kontrol-pemutar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 45%;
+}
+
+.tombol-kontrol {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.kontainer-progres {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  font-size: 0.8rem;
+  color: #b3b3b3;
+}
+
+.kontainer-progres input[type="range"],
+.kontainer-volume input[type="range"] {
+  flex: 1;
+  accent-color: #1db954;
+  cursor: pointer;
+}
+
+.kontainer-volume {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 20%;
+  justify-content: flex-end;
+}
+
+/* ==========================================
+   MODAL AUTHENTICATION
+   ========================================== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.konten-modal {
+  background-color: #181818;
+  border: 1px solid #282828;
+  color: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.tombol-tutup-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.tombol-tutup-modal:hover { color: #ffffff; }
+
+.konten-modal h3 { margin-bottom: 16px; font-size: 1.2rem; }
+
+.konten-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.konten-modal input {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background-color: #121212;
+  color: #ffffff;
+  outline: none;
+}
+
+.konten-modal input:focus { border-color: #1db954; }
+
+.tombol-submit-modal {
+  width: 100%;
+  padding: 10px;
+  background-color: #1db954;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.tombol-submit-modal:hover { background-color: #1ed760; }
+
+.teks-sakelar-modal {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #b3b3b3;
+}
+
+.teks-sakelar-modal a {
+  color: #1db954;
+  text-decoration: none;
+}
+
+.teks-sakelar-modal a:hover { text-decoration: underline; }
+
+/* ==========================================
+   MEDIA QUERIES (RESPONSIF MOBILE)
+   ========================================== */
+@media screen and (max-width: 600px) {
+  header {
+    padding: 10px 16px;
+  }
+  
+  .kotak-pencarian {
+    display: none; /* Sembunyikan pencarian di layar HP kecil */
+  }
+
+  .sedang-diputar {
+    width: 45%;
+  }
+
+  .kontrol-pemutar {
+    width: 50%;
+  }
+
+  .kontainer-volume {
+    display: none; /* Sembunyikan pengatur volume di layar HP */
+  }
+}
+
+body {
+  background-color: #121212;
+  /* Menambahkan gambar background */
+  background-image: url('https://cdn.shopify.com/s/files/1/0657/3100/2634/files/papierpeintmusique-casquesurfondcolore.png?v=1715586708');
+  background-size: cover;          /* Memastikan gambar menutup seluruh layar */
+  background-position: center;     /* Posisikan gambar di tengah */
+  background-repeat: no-repeat;    /* Agar gambar tidak mengulang (repeating) */
+  background-attachment: fixed;    /* Efek agar background tidak ikut bergeser saat di-scroll */
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 90px;
+  overflow-x: hidden;
+}
